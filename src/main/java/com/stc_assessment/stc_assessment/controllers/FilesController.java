@@ -16,7 +16,7 @@ public class FilesController {
     private FilesService filesService;
 
     @GetMapping(value = "/viewFile/{fileId}")
-    public ResponseEntity<?> viewFileMetaData(@PathVariable(value = "fileId", required = true) Long fileId) {
+    public ResponseEntity<?> viewFileMetaData(@PathVariable(value = "fileId") Long fileId) {
         return filesService.viewFileMetaData(fileId);
     }
 

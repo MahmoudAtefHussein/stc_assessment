@@ -19,18 +19,18 @@ public class ItemController {
     }
 
     @PostMapping(value = "/createFolder/{spaceId}")
-    public ResponseEntity<?> createNewFolder(@RequestBody Item folderItem, @PathVariable(value = "spaceId", required = false) Long spaceId) {
+    public ResponseEntity<?> createNewFolder(@RequestBody Item folderItem, @PathVariable(value = "spaceId") Long spaceId) {
         return itemService.createNewFolder(folderItem, spaceId);
     }
 
     @PostMapping(value = "/createFile/{spaceId}/{folderId}")
-    public ResponseEntity<?> createNewFile(@RequestBody Item fileItem, @PathVariable(value = "spaceId", required = true) Long spaceId,
-                                           @PathVariable(value = "folderId", required = false) Long folderId) {
+    public ResponseEntity<?> createNewFile(@RequestBody Item fileItem, @PathVariable(value = "spaceId") Long spaceId,
+                                           @PathVariable(value = "folderId") Long folderId) {
         return itemService.createNewFile(fileItem, spaceId, folderId);
     }
 
     @PostMapping(value = "/createFile/{spaceId}")
-    public ResponseEntity<?> createNewFile(@RequestBody Item fileItem, @PathVariable(value = "spaceId", required = true) Long spaceId) {
+    public ResponseEntity<?> createNewFile(@RequestBody Item fileItem, @PathVariable(value = "spaceId") Long spaceId) {
         return itemService.createNewFile(fileItem, spaceId, null);
     }
 
