@@ -11,7 +11,7 @@
 	<groupId>com.stc_assessment</groupId>
 	<artifactId>stc_assessment</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>stc_assessment</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -64,6 +64,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>stc_assessment</finalName>
 	</build>
 
 </project>
