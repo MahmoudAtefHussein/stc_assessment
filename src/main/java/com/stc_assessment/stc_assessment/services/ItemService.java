@@ -54,6 +54,7 @@ public class ItemService {
     }
 
     private String createNewItem(Item item, Long spaceId, Long folderId, String itemType) throws IOException {
+        String returnString = itemType + " created successfully with item ID [";
         if (item != null && itemType != null) {
             String parentSpaceName = "";
             if (itemType.equals("File") || itemType.equals("Folder")) {
@@ -105,16 +106,18 @@ public class ItemService {
             }
             item.setType(itemType);
             item = itemRepository.save(item);
+            returnString += +item.getId() + "]";
             if (itemType.equals("File")) {
                 ObjectMapper objectMapper = new ObjectMapper();
                 objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
                 byte[] fileBytes = objectMapper.writeValueAsBytes("Welcome To STC");
                 writeBytesInFile(path, fileBytes);
                 byte[] bytes = Files.readAllBytes(file.toPath());
-                filesService.addNewFile(bytes, path, item);
+                com.stc_assessment.stc_assessment.entites.Files savedFile = filesService.addNewFile(bytes, path, item);
+                returnString += " and file ID [" + savedFile.getId() + "]";
             }
         }
-        return itemType + " created successfully with ID [" + item.getId() + "]";
+        return returnString;
     }
 
 
